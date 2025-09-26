@@ -4,25 +4,87 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zijun Chen - Personal Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-    header { background: #2c3e50; color: #fff; padding: 20px; text-align: center; }
-    nav { margin-top: 10px; }
-    nav a { color: #ecf0f1; margin: 0 10px; text-decoration: none; }
-    section { padding: 20px; max-width: 900px; margin: auto; }
-    h2 { border-bottom: 2px solid #2c3e50; padding-bottom: 5px; }
-    ul { list-style: none; padding: 0; }
-    ul li { margin-bottom: 8px; }
-    footer { background: #2c3e50; color: #fff; text-align: center; padding: 10px; margin-top: 20px; }
-    .btn { display: inline-block; margin-top: 10px; padding: 10px 15px; background: #2980b9; color: #fff; text-decoration: none; border-radius: 5px; }
+    :root {
+      --primary:#2575fc;
+      --primary-dark:#6a11cb;
+      --bg:#f5f6fa;
+      --card:#ffffff;
+      --text:#333;
+      --heading:#2c3e50;
+      --tag-bg:#eaf1ff;
+      --tag:#2575fc;
+      --soft-bg:#fff3cd;
+      --soft:#856404;
+      --ongoing:#27ae60;
+      --shadow:0 4px 12px rgba(0,0,0,.1);
+      --shadow-hover:0 6px 16px rgba(0,0,0,.15);
+    }
+    *{box-sizing:border-box}
+    body { font-family:'Poppins',sans-serif; background:var(--bg); padding:30px; color:var(--text); }
+    header { text-align:center; margin-bottom:20px; }
+    header h1 { margin:0 0 6px 0; color:var(--heading); }
+    nav { margin-top:8px; }
+    nav a { margin:0 10px; text-decoration:none; color:var(--primary); font-weight:500; }
+    nav a:hover{color:var(--primary-dark)}
+    section { max-width:1100px; margin:30px auto; }
+    h2 { color:var(--heading); border-bottom:2px solid var(--primary); padding-bottom:6px; margin-bottom:16px; }
+
+    .card {
+      background:var(--card); border-radius:12px; box-shadow:var(--shadow);
+      padding:20px; max-width:1100px; margin:20px auto; transition:.25s ease;
+      position:relative; cursor:pointer; transform:scale(1);
+    }
+    .card:hover { box-shadow:var(--shadow-hover); transform:scale(1.02); }
+    .card.ongoing { border-left:6px solid var(--ongoing); }
+    .ongoing-label {
+      position:absolute; top:15px; right:20px; background:var(--ongoing); color:#fff;
+      font-size:.8em; padding:3px 8px; border-radius:5px; display:flex; align-items:center; gap:6px;
+    }
+    .shake { display:inline-block; animation:shake 2s infinite; }
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(-10deg); }
+      40% { transform: rotate(10deg); }
+      60% { transform: rotate(-10deg); }
+      80% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .card h3 { margin:0; font-size:1.3em; color:var(--heading); }
+    .meta { font-size:.9em; color:#777; margin:6px 0 10px; }
+    .summary { margin:10px 0; font-size:.95em; }
+    .tags { margin:8px 0; }
+    .tag {
+      display:inline-block; background:var(--tag-bg); color:var(--tag);
+      padding:4px 10px; border-radius:6px; font-size:.8em; margin:3px;
+    }
+    .software-tag {
+      display:inline-block; background:var(--soft-bg); color:var(--soft);
+      padding:4px 10px; border-radius:6px; font-size:.8em; margin:3px;
+    }
+    .details { display:none; margin-top:14px; animation:fadeIn .4s ease-in-out; }
+    .details h4 { margin-top:15px; color:var(--primary); }
+    .details ul { padding-left:20px; margin:8px 0; }
+    .details ul li { margin:6px 0; }
+    .btn-close {
+      background:var(--primary); color:#fff; border:none; border-radius:6px; padding:6px 12px;
+      cursor:pointer; margin-top:14px; font-size:.8em; float:right;
+    }
+    .btn-close:hover { background:var(--primary-dark); }
+    img { max-width:100%; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,.2); margin-top:10px; }
+    @keyframes fadeIn { from{opacity:0; transform:translateY(-5px)} to{opacity:1; transform:translateY(0)} }
+    a { color:var(--primary); }
+    a:hover{ color:var(--primary-dark) }
   </style>
 </head>
 <body>
   <header>
     <h1>Zijun Chen</h1>
-    <p>Email: <a href="mailto:ZCHEN093@e.ntu.edu.sg" style="color:#ecf0f1;">ZCHEN093@e.ntu.edu.sg</a> | Phone: +65 8451 6328</p>
+    <p>Email: <a href="mailto:ZCHEN093@e.ntu.edu.sg">ZCHEN093@e.ntu.edu.sg</a> | Phone: +65 8451 6328</p>
     <nav>
       <a href="#education">Education</a>
+      <a href="#interests">Research Interests</a>
       <a href="#research">Research</a>
       <a href="#internships">Internships</a>
       <a href="#awards">Awards</a>
@@ -33,53 +95,220 @@
   <section id="education">
     <h2>Education</h2>
     <ul>
-      <li><strong>Nanyang Technological University, Singapore</strong> (08/2025 - present)<br>MSc. in Biomedical Data Science (AI)</li>
-      <li><strong>University of Birmingham</strong> (09/2021 - 06/2025)<br>BSc. in Applied Mathematics and Mathematics (GPA: 3.97/4.25, First Class Honours)</li>
-      <li><strong>Jinan University</strong> (09/2021 - 06/2025)<br>BSc. in Mathematics and Applied Mathematics (GPA: 89/100)</li>
+      <li><strong>Nanyang Technological University, Singapore</strong> (08/2025 – present)<br>MSc. in Biomedical Data Science (AI)</li>
+      <li><strong>University of Birmingham</strong> (09/2021 – 06/2025)<br>BSc. in Applied Mathematics and Mathematics (GPA: 3.97/4.25, First Class Honours)</li>
+      <li><strong>Jinan University</strong> (09/2021 – 06/2025)<br>BSc. in Mathematics and Applied Mathematics (GPA: 89/100)</li>
+    </ul>
+  </section>
+
+  <section id="interests">
+    <h2>Research Interests</h2>
+    <ul>
+      <li>Computational Pathology & Biomedical Image Analysis</li>
+      <li>Machine Learning for Healthcare and Digital Health</li>
+      <li>Physics-Informed Neural Networks and Data-Driven Modeling</li>
+      <li>Applied Mathematics in Biology and Epidemiology</li>
     </ul>
   </section>
 
   <section id="research">
     <h2>Academic Research</h2>
-    <h3>Advanced Membrane-Level Cell Segmentation for Enhanced Immunofluorescence Analysis</h3>
-    <p>Research Assistant, Computational Digital Pathology Lab, BII, A*STAR, Singapore (08/2025 - present)</p>
-    <ul>
-      <li>Conducted a thorough review of existing cell segmentation methods in multiplexed immunofluorescence imaging.</li>
-      <li>Identified key limitations in nuclear-based and tissue-specific models, motivating membrane-level segmentation.</li>
-      <li>Aimed to propose a generalized strategy leveraging fluorescence-bound membrane markers for concave and deformable cells.</li>
-    </ul>
 
-    <h3>Gesture Recognition from Sensors Using Dual-path Encoding and Attention</h3>
-    <p>Final Year Project, University of Birmingham (09/2024 - 04/2025)</p>
-    <ul>
-      <li>Proposed DS-CAN framework with dual convolutional encoders for accelerometer and gyroscope signals.</li>
-      <li>Introduced multi-head attention for adaptive cross-modal fusion, improving robustness to noise and variability.</li>
-      <li>Extended contrastive learning (NT-Xent) to multimodal settings, strengthening feature clustering and separation.</li>
-      <li>Achieved ~94% accuracy on benchmark datasets with lightweight design suitable for real-time deployment.</li>
-    </ul>
+    <!-- 1. Ongoing: Cell Segmentation -->
+    <div class="card ongoing">
+      <div class="ongoing-label"><span class="shake">🔔</span>Ongoing</div>
+      <h3>🔬 Advanced Membrane-Level Cell Segmentation</h3>
+      <div class="meta">Computational Digital Pathology Lab, BII, A*STAR (Singapore) | 08/2025 – Present</div>
+      <div class="summary">
+        This project develops a <strong>generalized membrane-level cell segmentation algorithm</strong> for multiplexed immunofluorescence imaging. 
+        Existing approaches fall into two groups: <em>nuclear-based methods</em> that extrapolate cell extents from nuclei (simple but shape-agnostic),
+        and <em>tissue-specific models</em> that capture boundaries yet require retraining for each tissue.
+        By leveraging <strong>membrane-bound marker fluorescence</strong>, we aim to delineate highly concave and deformable cells (e.g., amoeboid immune cells, neurons, migrating cells)
+        and enhance downstream immunofluorescence analysis.
+      </div>
+      <div class="tags">
+        <span class="tag">Nuclear Segmentation</span>
+        <span class="tag">Tissue-specific Models</span>
+        <span class="tag">Membrane-level</span>
+        <span class="software-tag">Python</span>
+      </div>
+      <div class="details">
+        <h4>Background</h4>
+        <p>Current cell segmentation algorithms for multiplexed immunofluorescence imaging are either generalized but shape-agnostic (nuclear-based),
+        or accurate but narrow in scope (tissue-specific). The lack of reliable <strong>membrane-level segmentation</strong> across tissues hinders the study of
+        complex morphologies, especially for immune cells, neurons, and migrating cells.</p>
 
-    <h3>Other Research</h3>
-    <ul>
-      <li>Digital Health Literacy Study for Older People (ICGAL 2025 presentation).</li>
-      <li>Physics-Informed Neural Networks with Broad Learning Systems (BLS) and Fuzzy Neural Networks.</li>
-      <li>Infectious Disease Simulation with Bayesian inference and MCMC methods.</li>
-      <li>Machine learning on Fano Variety in Tropical Geometry.</li>
-    </ul>
+        <h4>Current Work</h4>
+        <ul>
+          <li><strong>Literature review:</strong> comprehensive survey of nuclear-based and tissue-specific methods, identifying limitations in membrane-level segmentation.</li>
+          <li><strong>Algorithm design & implementation:</strong> developing a generalized membrane-driven approach that traces cell boundaries from fluorescence-bound markers.</li>
+          <li><strong>Data pipeline:</strong> collection and preprocessing of multiplexed images from varied tissue sources for robust training/testing.</li>
+          <li><strong>Training & validation:</strong> leveraging GPU clusters to train models on diverse datasets and validate with expert annotations.</li>
+          <li><strong>Performance evaluation:</strong> benchmarking on challenging concave/flexible cell types; iterative error analysis and refinement.</li>
+          <li><strong>Documentation & communication:</strong> maintaining detailed records and presenting progress to the research team.</li>
+        </ul>
+
+        <h4>Expected Outcomes</h4>
+        <ul>
+          <li>A <strong>generalizable membrane-level segmentation framework</strong> that transfers across tissues.</li>
+          <li>Improved analysis for structurally complex cells and enhanced downstream quantification.</li>
+          <li>Algorithmic contributions to computational pathology and biomedical data science.</li>
+        </ul>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <!-- 2. Completed: Gesture Recognition -->
+    <div class="card">
+      <h3>✋ Gesture Recognition from Sensors Using Dual-path Encoding and Attention</h3>
+      <div class="meta">Final Year Project | University of Birmingham | 09/2024 – 04/2025</div>
+      <div class="summary">
+        We designed <strong>DS-CAN</strong>, a multimodal framework for MEMS-based gesture recognition.
+        The system employs <strong>dual convolutional encoders</strong> to preserve modality-specific dynamics (accelerometer vs. gyroscope),
+        a <strong>multi-head attention</strong> module for adaptive cross-modal fusion, and extends <strong>contrastive learning (NT-Xent)</strong> to the multimodal setting.
+        The model attains ~<strong>94% accuracy</strong> with a lightweight footprint (3.9M parameters, 10.3 ms inference), enabling <strong>real-time deployment</strong> on wearables.
+        📄 A full paper (PDF) is available in the details section.
+      </div>
+      <div class="tags">
+        <span class="tag">Contrastive Learning</span>
+        <span class="tag">Data Fusion</span>
+        <span class="tag">Multi-Head Attention</span>
+        <span class="tag">MEMS-sensors</span>
+        <span class="software-tag">Python</span>
+      </div>
+      <div class="details">
+        <h4>Background</h4>
+        <p>Compared to camera-based methods, MEMS sensors offer low power and strong privacy, but robust <em>multimodal fusion</em>, discriminative representation
+        learning, and <em>lightweight deployment</em> remain challenging.</p>
+
+        <h4>Methodology</h4>
+        <ul>
+          <li><strong>Dual-path encoding:</strong> two convolutional encoders independently model accelerometer and gyroscope streams.</li>
+          <li><strong>Attention-based fusion:</strong> multi-head attention reweights cross-modal features to enhance robustness under noise/variability.</li>
+          <li><strong>Multimodal contrastive learning:</strong> NT-Xent adapted to align modalities while maximizing inter-class margins.</li>
+        </ul>
+
+        <h4>Results</h4>
+        <ul>
+          <li>~94% accuracy on public benchmarks (e.g., 6DMG, MGD).</li>
+          <li>Compact model (3.9M params) with <strong>10.3 ms</strong> inference latency suitable for real-time wearables.</li>
+          <li>Stable performance across subjects and sensor noise conditions.</li>
+        </ul>
+
+        <h4>Resources</h4>
+        <p>📄 <a href="Gesture%20Recognition%20from%20Sensors%20Using%20Dual-path%20Encoding%20and%20Attention.pdf" target="_blank">Download full paper (PDF)</a></p>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <!-- 3. Ongoing: Digital Health Literacy -->
+    <div class="card ongoing">
+      <div class="ongoing-label"><span class="shake">🔔</span>Ongoing</div>
+      <h3>👵 Creating Supportive Environments to Bridge the Digital Health Literacy for Older People</h3>
+      <div class="meta">Research Advisor: Prof. CHU, Samuel K.W. | 01/2024 – Present</div>
+      <div class="tags">
+        <span class="tag">Health Literacy</span>
+        <span class="tag">Elderly Engagement</span>
+        <span class="tag">Intergenerational Learning</span>
+        <span class="software-tag">SPSS, R</span>
+      </div>
+      <div class="details">
+        <h4>Background</h4>
+        <p>Older adults often encounter socioeconomic and technological barriers to adopting digital health tools. Targeted literacy programs can
+        improve access and outcomes, but designing sustainable, community-driven interventions remains an open problem.</p>
+
+        <h4>Current Work</h4>
+        <ul>
+          <li>Surveyed multiple cities (600+ responses) to identify adoption factors and pain points.</li>
+          <li>Co-designed and delivered an 8-week <strong>intergenerational co-learning</strong> program with community day care centers.</li>
+          <li>Mixed-methods evaluation (questionnaires + interviews) to quantify confidence gains and usage behaviors.</li>
+        </ul>
+
+        <h4>Expected Outcomes</h4>
+        <ul>
+          <li>Increased <strong>digital confidence</strong> and e-health tool usage among older adults.</li>
+          <li>Actionable insights for scaling up community-based interventions.</li>
+          <li>Policy implications for inclusive digital health ecosystems.</li>
+        </ul>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <!-- 4. Completed: PINN -->
+    <div class="card">
+      <h3>⚙️ Physics-Informed Neural Networks with Broad Learning Systems</h3>
+      <div class="meta">Research Assistant | 09/2024 – 07/2025</div>
+      <div class="tags">
+        <span class="tag">PINN</span>
+        <span class="tag">Fuzzy Rules</span>
+        <span class="tag">Alzheimer’s Diagnosis</span>
+        <span class="tag">Broad Learning</span>
+        <span class="software-tag">Python</span>
+      </div>
+      <div class="details">
+        <ul>
+          <li>Developed physics-informed neural networks integrating fuzzy rules to solve PDEs more efficiently.</li>
+          <li>Reviewed 156 AI-driven methodologies for Alzheimer’s disease diagnosis and synthesized best practices.</li>
+          <li>Co-authored book chapters on <strong>Fuzzy BLS (FBLS)</strong> and <strong>Extreme FBLS (E-FBLS)</strong>.</li>
+        </ul>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <!-- 5. Completed: Infectious Disease -->
+    <div class="card">
+      <h3>🦠 Infectious Disease Simulation with Bayesian Inference</h3>
+      <div class="meta">Research Project | 08/2024 – 02/2025</div>
+      <div class="tags">
+        <span class="tag">Epidemiology</span>
+        <span class="tag">Bayesian Inference</span>
+        <span class="tag">MCMC</span>
+        <span class="software-tag">R</span>
+      </div>
+      <div class="details">
+        <ul>
+          <li>Implemented and optimized SIR, SIS, and SEIR models with Bayesian inference in R.</li>
+          <li>Used Gibbs sampling and adaptive Metropolis–Hastings for parameter estimation under uncertainty.</li>
+          <li>Improved predictive accuracy of epidemic dynamics and scenario analysis.</li>
+        </ul>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
+
+    <!-- 6. Completed: Fano Variety -->
+    <div class="card">
+      <h3>📐 Machine Learning on Fano Variety in Tropical Geometry</h3>
+      <div class="meta">Summer Research | University of Birmingham | 07/2024 – 08/2024</div>
+      <div class="tags">
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Geometry</span>
+        <span class="tag">Quantum Data</span>
+        <span class="software-tag">Python</span>
+      </div>
+      <div class="details">
+        <ul>
+          <li>Trained predictive models on 14,000+ samples and 28M quantum period data points of Fano varieties.</li>
+          <li>Applied PCA for dimensionality reduction and explored MLP/RNN/SVM baselines for property inference.</li>
+          <li>Analyzed cases of hypothesis deviation to inform future modeling improvements.</li>
+        </ul>
+        <button class="btn-close">Close</button>
+      </div>
+    </div>
   </section>
 
   <section id="internships">
     <h2>Internships</h2>
     <ul>
-      <li><strong>Data Analyst</strong>, Fujian Level One Big Data Development Co., Ltd. (01/2024 - 02/2024)</li>
-      <li><strong>Market Researcher</strong>, CCPIT Fujian (07/2023 - 08/2023)</li>
-      <li><strong>Laboratory Assistant</strong>, Fujian Provincial Hospital (07/2022 - 08/2022)</li>
+      <li><strong>Data Analyst</strong>, Fujian Level One Big Data Development Co., Ltd. (01/2024 – 02/2024)</li>
+      <li><strong>Market Researcher</strong>, CCPIT Fujian (07/2023 – 08/2023)</li>
+      <li><strong>Laboratory Assistant</strong>, Fujian Provincial Hospital (07/2022 – 08/2022)</li>
     </ul>
   </section>
 
   <section id="awards">
     <h2>Honors & Awards</h2>
     <ul>
-      <li>University Level Third-Class Scholarship (2023-2025)</li>
+      <li>University Level Third-Class Scholarship (2023–2025)</li>
       <li>Excellent Scientific Research Scholarship (2024)</li>
       <li>2nd Prize, National College Student Mathematical Modeling Competition, Guangdong (2022)</li>
       <li>Honorable Mention, Mathematical Contest in Modeling (MCM/ICM, 2024)</li>
@@ -93,11 +322,32 @@
       <li><strong>Software:</strong> Microsoft Office, LaTeX</li>
       <li><strong>Languages:</strong> Chinese (Native), English (IELTS 7.5)</li>
     </ul>
-    <a class="btn" href="CV_ZijunChen.pdf">Download CV (PDF)</a>
+    <a href="CV_ZijunChen.pdf">Download CV (PDF)</a>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Zijun Chen | Built with HTML & CSS</p>
-  </footer>
+  <script>
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const details = card.querySelector('.details');
+      const closeBtn = card.querySelector('.btn-close');
+
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-close') || e.target.tagName === 'A') return;
+
+        const isOpen = details.style.display === 'block';
+        // Close all
+        document.querySelectorAll('.card .details').forEach(d => d.style.display = 'none');
+        // Toggle current
+        if (!isOpen) details.style.display = 'block';
+      });
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          details.style.display = 'none';
+        });
+      }
+    });
+  </script>
 </body>
 </html>
